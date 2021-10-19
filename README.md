@@ -13,3 +13,14 @@
     GND an Pin 9            -   Masse
 
     Zwischen **DQ** und **VDD** wird ein **Widerstand R1** Parallel geschalten. 
+
+## One-Wire Setup
+    Um 1-Wire zu aktivieren muss ein der device tree (dt) erweitert werden, damit die Module geladenwerden.
+    Dazu muss in  **/boot/config.txt** folgende Zeile eingefügt werden:
+	'''
+	dtoverlay=w1-gpio,gpiopin=4
+	'''
+    Statt GPIO-Pin 4 können beliebige GPIO Pins gewählt werden.
+
+    Nach einem reboot werden die One-Wire Slaves gefunden. Die Adressen und Daten können im Ordner **/sys/bus/w1/devices/** gefunden werden.
+    Source: "pinout.xyz/pinout/1_wire"
