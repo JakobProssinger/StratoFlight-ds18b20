@@ -1,28 +1,33 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # main.py - Temperatur Messung 
 import os, sys, time
 
 def getTemperatur(deviceAdresses):
 
 # 1-wire Slave Datei lesen
-	filecontent = ""
-	for adress in deviceAdresses:
+	temperature = [0.0] * len(device_adresses)
+	counter = 0
+	for address in deviceAdresses:
+		#Sensoren auslesen 
 		try:
-			file = open('/sys/bus/w1/devices/' + adress + '/w1_slave')
-			break
+			file = open('/sys/bus/w1/devices/' + address + '/w1_slave')
 		except OSError:
-			print('cannot open', ('/sys/bus/w1/devices/' +adress + '/w1_slave'))
-			return  0.0
-	filecontent = 	file.read()
-	file.close()
+			print('cannot open', ('/sys/bus/w1/devices/' + address + '/w1_slave'))
+			temperature[counter] = 'Error'
+			counter= counter + 1 
+		else:					
+			filecontent = file.read()
+			file.close()
 
-	# Temperaturwerte auslesen und konvertieren
-	stringvalue = filecontent.split("\n")[1].split(" ")[9]
-	temperature = float(stringvalue[2:]) / 1000
+			# Error in Temperatursensor Daten
+			if len(filecontent) != 75:
+				print("File Error")
+			else :
+				stringvalue = filecontent.split("\n")[1].split(" ")[9]
+				temperature[counter] = float(stringvalue[2:]) / 1000
+				counter = counter + 1 
 
-	# Temperatur ausgeben
-	rueckgabewert = '%6.2f' % temperature 
-	return(rueckgabewert)
+	return temperature
 
 if __name__ == '__main__':
 	device_adresses = ['28-00000cdfc36f', '28-00000cdf6b81']
