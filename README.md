@@ -1,5 +1,6 @@
 ## Pin Blegeung des ds18b20:
 
+    (Ansicht von Unten)
     ------------
     \ 1  2  3 /
      \_______/  
