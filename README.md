@@ -13,7 +13,7 @@
     DQ  an Pin 7 (GPIO4)    -   kann allerdings frei gewählt werden 
     GND an Pin 9            -   Masse
 
-    Zwischen DQ und VDD wird ein Widerstand R1 Parallel geschalten. 
+    An DQ wird ein Pull-Up Widerstand R1 mit 3,3kΩ bist 4,7kΩ angeschlossen.
 
 ## One-Wire Setup
     Um 1-Wire zu aktivieren muss ein der device tree (dt) erweitert werden, damit die Module geladenwerden.
