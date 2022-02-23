@@ -1,4 +1,4 @@
-## Pin Blegeung des ds18b20:
+## Pin Belegung des ds18b20:
 
     (Ansicht von Unten)
     ------------
@@ -6,7 +6,7 @@
      \_______/  
     1: GND
     2: DQ - Daten Leitung
-    3: VDD - Versorgung Spannung 3 - 5.5V 
+    3: VDD - Versorgungs-Spannung 3 - 5.5V 
 
 ## Schaltungssaufbau:
     VDD an Pin 1            -   3,3V
